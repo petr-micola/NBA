@@ -17,7 +17,8 @@ module.exports = {
         helvetica: ['Helvetica Black Condensed', 'sans-serif'],
         poppinsl: ['Poppins Light', 'sans-serif'],
         poppinsm: ['Poppins Medium', 'sans-serif'],
-      }
+      },
+      
     },
   },
   plugins: [],

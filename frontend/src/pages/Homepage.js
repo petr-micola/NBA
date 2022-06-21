@@ -22,23 +22,19 @@ document.onscroll = function () {
   if (about.getBoundingClientRect().top <= 0) {
     nav.classList.remove('text-white');
     nav.classList.add('text-black');
-    navAbout.classList.remove('border-transparent');
-    navAbout.classList.add('border-nba-blue-hover');
+    navAbout.classList.add('nav-link-active');
   } else {
     nav.classList.remove('text-black');
     nav.classList.add('text-white');
-    navAbout.classList.remove('border-nba-blue-hover');
-    navAbout.classList.add('border-transparent');
+    navAbout.classList.remove('nav-link-active');
   }
 
   if (teams.getBoundingClientRect().top <= 0) {
-    navAbout.classList.remove('border-nba-blue-hover');
-    navAbout.classList.add('border-transparent');
-    navTeams.classList.remove('border-transparent');
-    navTeams.classList.add('border-nba-blue-hover');
+    navAbout.classList.remove('nav-link-active');
+    navTeams.classList.add('nav-link-active');
   } else {
-    navTeams.classList.add('border-transparent');
-    navTeams.classList.remove('border-nba-blue-hover');
+    navTeams.classList.add('nav-link-active');
+    navTeams.classList.remove('nav-link-active');
   }
 }
 

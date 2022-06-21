@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 const TEAM = gql`
@@ -12,6 +12,7 @@ query GetTeam($id: ID!) {
       attributes {
         logo {
           data {
+            id
             attributes {
               url
             }
@@ -22,6 +23,7 @@ query GetTeam($id: ID!) {
         arena
         arena_photo {
           data {
+            id
             attributes {
               url
             }
@@ -29,10 +31,12 @@ query GetTeam($id: ID!) {
         }
         players {
           data {
+            id
             attributes {
               name
               number
             }
+            id
           }
         }
       }
@@ -54,7 +58,7 @@ export default function Teams() {
     <div className='font-poppinsl'>
       <div className='h-screen'>
         <div className='p-4'>
-          <Link to={'/#teams'}><span className='border-b-2 border-transparent hover:border-nba-blue-hover duration-300 font-poppinsm'>← Go back</span></Link>
+          <Link to={'/#teams'}><span className='nav-link font-poppinsm'>← Go back</span></Link>
         </div>
         <div className='flex items-center flex-col'>
           <div className='flex items-center justify-center'>
@@ -68,6 +72,14 @@ export default function Teams() {
             <div className='flex justify-center flex-col mb-8'>
               <img className='pt-6 pb-2 max-w-xs md:max-w-lg self-center' src={`http://localhost:1337${data.team.data.attributes.arena_photo.data.attributes.url}`} alt="" />
               <p className='text-center'><span className='font-poppinsm'>Arena: </span>{data.team.data.attributes.arena}</p>
+              <p className='text-center font-poppinsm'>Player roster:</p>
+              <div>
+                {data.team.data.attributes.players.data.map(player => (
+                  <div key={player.id}>
+                    <p className='text-center'>{`#${player.attributes.number} ${player.attributes.name}`}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

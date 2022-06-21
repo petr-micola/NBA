@@ -10,6 +10,7 @@ query GetTeams {
         attributes {
           logo {
             data {
+              id
               attributes {
               	url
               }
@@ -17,6 +18,7 @@ query GetTeams {
           }
           featured_player {
             data {
+              id
                 attributes {
                     url
                 }

@@ -16,3 +16,21 @@
     font-family: 'Poppins Medium';
     src: url('fonts/Poppins-Medium.ttf');
 }
+
+@layer components {
+    .nav-link {
+        @apply relative mr-4 before:content-[""]
+    }
+
+    .nav-link::before {
+        @apply absolute block w-full h-0.5 bottom-0 left-0 bg-nba-blue-hover scale-x-0 transform duration-300
+    }
+
+    .nav-link:hover::before {
+        @apply scale-x-100
+    }
+
+    .nav-link-active::before {
+        @apply absolute block w-full h-0.5 bottom-0 left-0 bg-nba-blue-hover scale-x-100 transform duration-300
+    }
+}
